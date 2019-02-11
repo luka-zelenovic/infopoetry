@@ -23,7 +23,7 @@ button {
 }
 button:hover,
 button:active {
-  background-color: #7c265e;
+  background-color: orangered;
   
   color: #b3cde0;
   transition: color 0.3s ease-in,
@@ -547,11 +547,11 @@ b.ball {
 }
 #yourres {
 	position: absolute;
-	background-color: 011f4b; 
+	
 	top: 90%;
 	left: 35%;
 	width: 30%;
-	 border: 1px solid #50704d;
+	 border: 1px solid #b3cde0;
 	text-decoration: none;
 }
 #endd {

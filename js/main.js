@@ -1,4 +1,4 @@
-window.addEventListener("load", function() { window.scrollTo(500); });
+window.addEventListener("load", function() { window.scrollTo(1,1); });
 
 arrayRed = [2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36];
 arrayBlack = [3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37];
@@ -24,6 +24,7 @@ function IfRed () {
 	setTimeout(function(){
 	if (arrayRed.includes(mojbroj)) {
 			if(coldbroj === 3||hotbroj === 3) {
+				document.getElementById('goagain').style.opacity = "0";
 			document.getElementById('resultsss').style.display = "block";
 			document.getElementById('message').innerHTML = 'Your luck seems to be endless! Now let me stop and show you how streaks can influnce gamblers decisions.';
 			money += 100;
@@ -41,6 +42,7 @@ function IfRed () {
 	}else {
 		
 			if(coldbroj === 3||hotbroj === 3) {
+				document.getElementById('goagain').style.opacity = "0";
 			document.getElementById('resultsss').style.display = "block";
 			document.getElementById('message').innerHTML = 'Your luck has come to an end! Now let me stop and show you how streaks can influnce gamblers decisions.';
 			money -= 100;
@@ -65,6 +67,7 @@ function IfBlack () {
 	setTimeout(function(){
 	if (arrayBlack.includes(mojbroj)) {
 		if(coldbroj === 3||hotbroj === 3) {
+			document.getElementById('goagain').style.opacity = "0";
 			document.getElementById('resultsss').style.display = "block";
 			document.getElementById('message').innerHTML = 'Your luck seems to be endless! Now let me stop and show you how streaks can influnce gamblers decisions.';
 			money += 100;
@@ -81,6 +84,7 @@ function IfBlack () {
 		}
 	} else {
 		if(coldbroj === 3||hotbroj === 3) {
+			document.getElementById('goagain').style.opacity = "0";
 			document.getElementById('resultsss').style.display = "block";
 			document.getElementById('message').innerHTML = 'Your luck has come to an end! Now let me stop and show you how streaks can influnce gamblers decisions.';
 			money -= 100;
@@ -184,7 +188,7 @@ function LastChance () {
 			coldbroj =0;
 			hotbroj +=1;
 			document.getElementById('money').innerHTML =  money +" "+ "<img src='img/poker.svg' width='20px'>";
-			
+			document.getElementById('goagain').style.opacity = "0";
 			document.getElementById('resultsss').style.display = "block";
 			document.getElementById('message').innerHTML = 'Amazing call! Last chance desparation move, and you made it work! Before you get addicted I have to stop and show you how streaks can influnce gamblers decisions.';
 		} else {
@@ -193,7 +197,7 @@ function LastChance () {
 			coldbroj +=1;
 			money -= 100; 
 			document.getElementById('money').innerHTML =  money +" "+ "<img src='img/poker.svg' width='20px'>";
-			
+			document.getElementById('goagain').style.opacity = "0";
 			document.getElementById('resultsss').style.display = "block";
 			document.getElementById('message').innerHTML = 'Well that was a tough shot, anyway. But before you go on let me show you how streaks can influnce gamblers decisions.';
 		}
@@ -219,7 +223,7 @@ function SafeBet () {
 			hotbroj +=1;
 			document.getElementById('money').innerHTML =  money +" "+ "<img src='img/poker.svg' width='20px'>";
 			
-			
+			document.getElementById('goagain').style.opacity = "0";
 				document.getElementById('resultsss').style.display = "block";
 			document.getElementById('message').innerHTML = 'Playing it safe and smart! Before you get addicted I have to stop and show you how streaks can influnce gamblers decisions.';
 			
@@ -230,7 +234,7 @@ function SafeBet () {
 			money -= 100; 
 			document.getElementById('money').innerHTML =  money +" "+ "<img src='img/poker.svg' width='20px'>";
 			
-			
+			document.getElementById('goagain').style.opacity = "0";
 				document.getElementById('resultsss').style.display = "block";
 			document.getElementById('message').innerHTML = 'Just unlucky, still you played it safe and smart! Before you get addicted I have to stop and show you how streaks can influnce gamblers decisions.';
 			
@@ -261,7 +265,7 @@ $(".result").addClass("result-Hide");
 	}
 	
 $("#butt1").on("click", function(event){
-
+	 document.body.requestFullscreen();
   	 $(".text2").addClass("text2-Show");
 
 	 $(".text1").removeClass("text1-Show");
@@ -271,7 +275,7 @@ $("#butt1").on("click", function(event){
 
 })
 $("#butt2").on("click", function(event){
-
+ document.body.requestFullscreen();
    
 $(".text3").addClass("text3-Show");
 	 $(".text1").removeClass("text1-Show");
@@ -432,9 +436,27 @@ $(".result").addClass("result-Hide");
 	$(".specc4").removeClass("spin-spin");
 	
 })
-	
-	$("#yourres").mouseenter(function(event){
-		console.log(yesno);
+	var clickedlast =false;
+	$("#yourres").click(function(event){
+		if (clickedlast) {
+			
+			$(".starter").removeClass("s--Hide");
+			
+				$(".wong").removeClass("r--Show fadein");
+				
+				
+			
+				$(".lostg").removeClass("r--Show fadein");
+			
+			
+				$(".yesg").removeClass("r--Show fadein");
+				
+				
+			
+				$(".notg").removeClass("r--Show fadein");
+			clickedlast = false;
+			
+		} else {
 		if(hotcold === 1) {
 			$(".starter").addClass("s--Hide");
 				if(yesno) {
@@ -464,30 +486,9 @@ $(".result").addClass("result-Hide");
 		
 		
 		}
+			clickedlast = true;
+		}
 		
 	})
-$("#yourres").mouseleave(function(event){
-			$(".starter").removeClass("s--Hide");
-			
-				$(".wong").removeClass("r--Show fadein");
-				
-				
-			
-				$(".lostg").removeClass("r--Show fadein");
-			
-			
-				$(".yesg").removeClass("r--Show fadein");
-				
-				
-			
-				$(".notg").removeClass("r--Show fadein");
-			
-		
-			
-		
-		
-		
-		
-		
-})
+
 })
